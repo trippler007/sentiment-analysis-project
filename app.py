@@ -11,7 +11,9 @@ nltk.download('stopwords')
 stemmer = PorterStemmer()
 
 cv = pickle.load(open('cv_vectorizer.pkl', 'rb'))
-model = pickle.load(open('model_xgb.pkl', 'rb'))
+# model = pickle.load(open('model_xgb.pkl', 'rb'))
+model = pickle.load(open('model_dt.pkl', 'rb'))
+
 
 def text_transform(review):
     corpus = []
