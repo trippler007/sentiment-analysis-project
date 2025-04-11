@@ -35,7 +35,7 @@ if stm.button('predict'):
     transformed_review = text_transform(review)
     #2. vectorize
     vector_input = cv.transform([transformed_review])
-    vector_input = scaler.transform(vector_input) 
+    vector_input = scaler.transform(vector_input.toarray())
     #3. predict
     result = model.predict(vector_input)[0]
     #4. display
