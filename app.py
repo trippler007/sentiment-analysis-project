@@ -13,7 +13,7 @@ stemmer = PorterStemmer()
 cv = pickle.load(open('cv_vectorizer.pkl', 'rb'))
 # model = pickle.load(open('model_xgb.pkl', 'rb'))
 model = pickle.load(open('model_dt.pkl', 'rb'))
-
+scaler = pickle.load(open('scaler.pkl', 'rb'))
 
 def text_transform(review):
     corpus = []
@@ -30,11 +30,12 @@ review = stm.text_area("Enter your review: ")
 if stm.button('predict'):
   if review == "":
     stm.header("mail box is empty")
-  else:   
+  else: 
     #1. preprocess
     transformed_review = text_transform(review)
     #2. vectorize
     vector_input = cv.transform([transformed_review])
+    vector_input = scaler.transform(vector_input) 
     #3. predict
     result = model.predict(vector_input)[0]
     #4. display
